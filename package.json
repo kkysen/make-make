@@ -1,0 +1,27 @@
+{
+  "name": "MakeMake",
+  "version": "1.0.0",
+  "description": "A simple Makefile generator.",
+  "author": "Khyber Sen",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kkysen/MakeMake.git"
+  },
+  "homepage": "https://github.com/kkysen/MakeMake#readme",
+  "bugs": {
+    "url": "https://github.com/kkysen/MakeMake/issues"
+  },
+  "devDependencies": {
+    "@types/fs-extra": "^5.0.4",
+    "@types/node": "^10.5.2",
+    "typescript": "^2.9.2"
+  },
+  "dependencies": {
+    "fs-extra": "^6.0.1"
+  },
+  "main": "src/ts/core/main.js",
+  "scripts": {
+    "main": "node src/ts/core/main.js"
+  }
+}
