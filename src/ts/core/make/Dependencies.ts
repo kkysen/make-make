@@ -1,5 +1,6 @@
 import * as fs from "fs-extra";
-import {path} from "../util/polyfills/path";
+import {cmp} from "../../util/misc/compare";
+import {path} from "../../util/polyfills/path";
 import {MakeRule} from "./MakeMakeFile";
 
 interface Dependency {
@@ -44,7 +45,7 @@ export const Dependencies = {
     async new(root: string): Promise<Dependencies> {
         
         const dependencyCache: Map<string, DependencyTree> = new Map();
-    
+        
         async function followDependency({file, local}: Dependency): Promise<DependencyTree> {
             const dependencies = !local ? [] : await (async () => {
                 const {dir} = path.parse(file);
@@ -62,7 +63,9 @@ export const Dependencies = {
         }
         
         const tree = await followDependency({file: root, local: true});
-        const dependencies = [...dependencyCache.values()].filter(e => e.local);
+        const dependencies = [...dependencyCache.values()]
+            .filter(e => e.local)
+            .sort(cmp.byString(e => e.file));
         
         // TODO when searching dependency tree, must also search .c files,
         // since only .h files will be #included

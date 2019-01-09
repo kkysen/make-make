@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const fs = require("fs-extra");
-const Dir_1 = require("../util/io/Dir");
+const Dir_1 = require("../../util/io/Dir");
 const CMakeLists_1 = require("./CMakeLists");
 const Dependencies_1 = require("./Dependencies");
 const defaultVariables = {

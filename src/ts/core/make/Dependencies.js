@@ -1,7 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const fs = require("fs-extra");
-const path_1 = require("../util/polyfills/path");
+const compare_1 = require("../../util/misc/compare");
+const path_1 = require("../../util/polyfills/path");
 function findDependencies(code) {
     return code.split("\n")
         .filter(s => s.includes("#include"))
@@ -41,7 +42,9 @@ exports.Dependencies = {
             };
         }
         const tree = await followDependency({ file: root, local: true });
-        const dependencies = [...dependencyCache.values()].filter(e => e.local);
+        const dependencies = [...dependencyCache.values()]
+            .filter(e => e.local)
+            .sort(compare_1.cmp.byString(e => e.file));
         // TODO when searching dependency tree, must also search .c files,
         // since only .h files will be #included
         return {

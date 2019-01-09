@@ -1,5 +1,5 @@
 import * as fs from "fs-extra";
-import {Dir} from "../util/io/Dir";
+import {Dir} from "../../util/io/Dir";
 import {Dependencies} from "./Dependencies";
 
 export async function updateCMakeLists(dir: Dir, dependencies: Dependencies): Promise<void> {

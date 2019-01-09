@@ -1,6 +1,6 @@
 import * as fs from "fs-extra";
-import {Dir} from "../util/io/Dir";
-import {Creator} from "../util/io/FileToCreate";
+import {Dir} from "../../util/io/Dir";
+import {Creator} from "../../util/io/FileToCreate";
 import {updateCMakeLists} from "./CMakeLists";
 import {Dependencies} from "./Dependencies";
 
